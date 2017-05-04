@@ -247,7 +247,8 @@ public class RecordMakers {
                         ++count;
 
                         // Next send a tombstone event for the old key ...
-                        record = new SourceRecord(partition, offset, topicName, partitionNum, keySchema, oldKey, null, null);
+                        record = new SourceRecord(partition, offset, topicName, partitionNum,
+                                                  keySchema, oldKey, envelope.schema(), null);
                         consumer.accept(record);
                         ++count;
 
@@ -286,7 +287,7 @@ public class RecordMakers {
                     ++count;
                     // And send a tombstone ...
                     record = new SourceRecord(partition, offset, topicName, partitionNum,
-                            keySchema, key, null, null);
+                            keySchema, key, envelope.schema(), null);
                     consumer.accept(record);
                     ++count;
                 }

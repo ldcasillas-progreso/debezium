@@ -152,7 +152,7 @@ public class RecordMakersTest {
         assertThat(key2.schema()).isSameAs(tombstone.keySchema());
         assertThat(key2.get("_id")).isEqualTo(objId.toString());
         assertThat(tombstone.value()).isNull();
-        assertThat(tombstone.valueSchema()).isNull();
+        assertThat(tombstone.valueSchema()).isSameAs(record.valueSchema());
     }
 
 }

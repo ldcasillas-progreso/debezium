@@ -194,7 +194,7 @@ public class RecordMakers {
 
             if (operation == Operation.DELETE) {
                 // Also generate a tombstone event ...
-                record = new SourceRecord(sourcePartition, offset, topicName, partition, keySchema, key, null, null);
+                record = new SourceRecord(sourcePartition, offset, topicName, partition, keySchema, key, valueSchema, null);
                 recorder.accept(record);
                 return 2;
             }

@@ -276,7 +276,7 @@ public class RecordsStreamProducer extends RecordsProducer {
             recordConsumer.accept(record);
             
             // send a tombstone event (null value) for the old key so it can be removed from the Kafka log eventually...
-            record = new SourceRecord(partition, offset, topicName, null, oldKeySchema, oldKey, null, null);
+            record = new SourceRecord(partition, offset, topicName, null, oldKeySchema, oldKey, envelope.schema(), null);
             if (logger.isDebugEnabled()) {
                 logger.debug("sending tombstone event '{}' to topic '{}'", record, topicName);
             }
@@ -325,7 +325,7 @@ public class RecordsStreamProducer extends RecordsProducer {
         recordConsumer.accept(record);
         
         // And send a tombstone event (null value) for the old key so it can be removed from the Kafka log eventually...
-        record = new SourceRecord(partition, offset, topicName, null, keySchema, key, null, null);
+        record = new SourceRecord(partition, offset, topicName, null, keySchema, key, envelope.schema(), null);
         if (logger.isDebugEnabled()) {
             logger.debug("sending tombstone event '{}' to topic '{}'", record, topicName);
         }

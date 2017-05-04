@@ -168,7 +168,7 @@ public class VerifyRecord {
         assertThat(record.key()).isNotNull();
         assertThat(record.keySchema()).isNotNull();
         assertThat(record.value()).isNull();
-        assertThat(record.valueSchema()).isNull();
+        assertThat(record.valueSchema()).isNotNull();
     }
 
     /**
