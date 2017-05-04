@@ -213,7 +213,7 @@ public final class Envelope {
                 if (!missingFields.isEmpty()) {
                     throw new IllegalStateException("The envelope schema is missing field(s) " + String.join(", ", missingFields));
                 }
-                return new Envelope(builder.build());
+                return new Envelope(builder.optional().build());
             }
 
             private void checkFieldIsDefined(String fieldName, boolean required) {
